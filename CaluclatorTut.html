@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        div{
+            float: left;
+            box-sizing: border-box;
+        }
+        .calculator {
+            width: 250px;
+            height: 320px;
+            border: 5px solid teal;
+            background-color: rgb(116, 175, 151);
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .head {
+            width: 95%;
+            margin-left: 5px;
+            padding: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            border: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .body {
+            width: 100%;
+        }
+
+        .left {
+            width: 180px;
+        }
+
+        .right {
+            width: 50px;
+        }
+
+        .left.row {
+            width: 100%;
+        }
+
+        .left .cell {
+            width: 40px;
+            height: 48px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            margin-left: 15px;
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 7px;
+            cursor:pointer;
+        }
+        .left .cell:hover{
+            background-color: rgb(179, 179, 179);
+        }
+        .right .cell{
+            width:38px;
+            height: 38px;
+            background-color: orange;
+            margin-top: 8px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 7px;
+        }
+        .right .cell:hover{
+            background-color: rgb(179, 179, 179);
+        }
+        .overWrite{
+            width:100px;
+        }
+        .calcText{
+            font-style:  "Calibri";
+            padding-top: 8px;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class ="calcText">Stupid Calc</div>
+        <div class="head">
+            <input type="text" id="display"  placeholder=" 0" >
+        </div>
+        <div class="body">
+            <div class="left">
+                <div class="row">
+                    <div class="cell" onclick="displayNumber(7)">7</div>
+                    <div class="cell" onclick="displayNumber(8)">8</div>
+                    <div class="cell" onclick="displayNumber(9)">9</div>  
+                </div>
+                <div class="row">
+                    <div class="cell"onclick = "displayNumber(4)">4</div>
+                    <div class="cell"onclick = "displayNumber(5)">5</div>
+                    <div class="cell"onclick = "displayNumber(6)">6</div>
+                    
+                </div>
+                <div class="row">
+                    <div class="cell"  onclick = "displayNumber(1)">1</div>
+                    <div class="cell"onclick = "displayNumber(2)">2</div>
+                    <div class="cell" onclick = "displayNumber(3)">3</div>
+          
+                </div>
+                <div class="row">
+                    <div class="cell" onclick = "calculateResult()">0</div>
+                    <div class="cell" style = "width:95px" onclick = "clearTextBox()">CLEAR</div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <div class = "right">
+                <div class = "cell" onclick = "displayNumber('+')">+</div>
+                <div class = "cell" onclick = "displayNumber('-')">-</div>
+                <div class = "cell" onclick = "displayNumber('/')">/</div>
+                <div class = "cell" onclick = "displayNumber('*')">*</div>
+                <div class = "cell" onclick = "calculateResult()">=</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function displayNumber(a) {
+        var temp = document.getElementById('display').value;
+        temp = temp + " " + a;
+        document.getElementById('display').value = temp;
+        resetOpsButtons();
+        if (a == '+') {
+            document.getElementById('plus').style.backgroundColor = "pink";
+        }
+        if (a == '+') {
+            document.getElementById('minus').style.backgroundColor = "pink";
+        }
+    }
+    function clearTextBox() {
+        document.getElementById('display').value = "";
+    }
+    function calculateResult() {
+        var temp = document.getElementById('display').value;
+        if (temp.indexOf('+')) {
+            content = term.split('+');
+            var result = parseInt(content[0]) + parseInt(content[1]);
+            document.getElementById('display').value = result;
+        }
+    }
+</script>
+</html>
